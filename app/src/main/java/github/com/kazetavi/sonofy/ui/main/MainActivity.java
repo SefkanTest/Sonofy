@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     Button sortTitre;
     Button sortDate;
     Button sortLike;
+    Button archive_btn;
 
 
     @Override
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         sortTitre = findViewById(R.id.sortByTitre);
         sortDate = findViewById(R.id.sortByDate);
         sortLike = findViewById(R.id.sortByLike);
+        archive_btn = findViewById(R.id.btn_sup);
 
         newPublicationButton = findViewById(R.id.newPublicationButton);
         publicationRecyclerView = findViewById(R.id.publicationRecyclerView);
@@ -79,6 +81,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mainViewModel.loadPublicationsLike();
+            }
+        });
+
+        archive_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainViewModel.loadPublications();
             }
         });
 

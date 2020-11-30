@@ -79,4 +79,13 @@ public class MainViewModel extends ViewModel {
                     }
                 });
     }
+
+
+    void loadPublications() {
+        final List<Publication> publicationsList = new ArrayList<>();
+        PublicationFirestore.getAllPublicationsCollectionDesc();
+                            publications.setValue(publicationsList);
+                        }
 }
+
+
