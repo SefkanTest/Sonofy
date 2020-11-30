@@ -73,6 +73,12 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
                 PublicationFirestore.incrementDislike(publication);
             }
         });
+        holder.archive_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PublicationFirestore.archivePublication(publication);
+            }
+        });
 
         PublicationFirestore.getPublicationRef(publication)
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -100,6 +106,7 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
 
         LinearLayout likeButton;
         LinearLayout dislikeButton;
+        Button archive_btn;
 
         public PublicationViewHolder(View v) {
             super(v);
@@ -109,6 +116,7 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
             this.dislikeCountTextView = v.findViewById(R.id.dislikeCountTextView2);
             this.likeButton = v.findViewById(R.id.likeButton2);
             this.dislikeButton = v.findViewById(R.id.dislikeButton2);
+            this.archive_btn = v.findViewById(R.id.btn_sup);
         }
     }
 

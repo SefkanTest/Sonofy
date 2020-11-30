@@ -4,6 +4,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -14,6 +15,7 @@ import github.com.kazetavi.sonofy.data.model.Publication;
 public class PublicationFirestore {
 
     private static final String COLLECTION_NAME = "publicationsTest";
+    private static final String COLLECTION_NAME1 = "publicationsArchive";
     public static final String LIKE_COUNT = "likeCount";
     public static final String DISLIKE_COUNT = "dislikeCount";
     public static final String DATE_CREATED = "dateCreated";
@@ -23,11 +25,17 @@ public class PublicationFirestore {
     public static CollectionReference getPublicationsCollection(){
         return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
     }
-
+    public static CollectionReference getPublicationsCollection1(){
+        return FirebaseFirestore.getInstance().collection(COLLECTION_NAME1);
+    }
 
     // CREATE
     public static Task<DocumentReference> createPublication(Publication publication){
         return PublicationFirestore.getPublicationsCollection().add(publication);
+    }
+
+    public static Task<DocumentReference> createPublication1(Publication publication){
+        return PublicationFirestore.getPublicationsCollection1().add(publication);
     }
 
     // GET
@@ -112,6 +120,12 @@ public class PublicationFirestore {
 
     public static Task<Void> incrementDislike(Publication publication){
         return incrementValueByN(publication, DISLIKE_COUNT, 1);
+    }
+
+    //archive
+    public static Task<Void> archivePublication(Publication publication) {
+        PublicationFirestore.createPublication1(publication);
+        return PublicationFirestore.getPublicationsCollection().document(publication.getUid()).delete();
     }
 
     // DELETE
