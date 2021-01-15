@@ -37,4 +37,6 @@ jobs:
           
 
       - name: Build the app
-        run: ./gradlew build
+        run: |
+          chmod a+x gradlew
+          ./gradlew build
