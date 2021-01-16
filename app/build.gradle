@@ -38,7 +38,7 @@ android {
             props.load(new FileInputStream(propFile))
     
             signingConfigs.release.storeFile = file("../sonofy.jks")
-            signingConfigs.release.storePassword = "6XDRHc" //System.getenv("keystore_password")
+            signingConfigs.release.storePassword = "6XDRHcc" //System.getenv("keystore_password")
             signingConfigs.release.keyAlias = "key0-sonofy" //props['KEYSTORE_ALIAS'] //System.getenv("KEYSTORE_ALIAS")
             signingConfigs.release.keyPassword = "E77eJh" //props['KEY_PASSWORD'] //System.getenv("key_password")
         }
