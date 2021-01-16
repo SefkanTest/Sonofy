@@ -31,17 +31,10 @@ android {
     def isRunningOnTravis = System.getenv("CI") == "true"
 
     if (isRunningOnTravis) {
-    
-        def Properties props = new Properties()
-        def propFile = new File('signing.properties')
-        if (propFile.canRead()){
-            props.load(new FileInputStream(propFile))
-    
-            signingConfigs.release.storeFile = file("../sonofy.jks")
-            signingConfigs.release.storePassword = "6XDRHc" //System.getenv("keystore_password")
-            signingConfigs.release.keyAlias = "key0-sonofy" //props['KEYSTORE_ALIAS'] //System.getenv("KEYSTORE_ALIAS")
-            signingConfigs.release.keyPassword = "E77eJh" //props['KEY_PASSWORD'] //System.getenv("key_password")
-        }
+        signingConfigs.release.storeFile = file("../sonofy.jks")
+        signingConfigs.release.storePassword = System.getenv("KEYSTORE_PASSWORD") //"6XDRHc"
+        signingConfigs.release.keyAlias = System.getenv("KEYSTORE_ALIAS") //"key0-sonofy" //props['KEYSTORE_ALIAS']
+        signingConfigs.release.keyPassword = System.getenv("KEY_PASSWORD") //"E77eJh" //props['KEY_PASSWORD']
     }
 }
 
