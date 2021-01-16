@@ -41,7 +41,7 @@ jobs:
           KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
-          export KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}
+          export KEYSTORE_PASSWORD=6XDRHc
           export KEYSTORE_ALIAS=${{ secrets.KEYSTORE_ALIAS }}
           export KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}
           echo "KEYSTORE_PASSWORD=$"KEYSTORE_PASSWORD""
