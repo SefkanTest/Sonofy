@@ -41,7 +41,7 @@ jobs:
           KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
-          echo "KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_ALIAS }}"
+          echo "KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_ALIAS }}" >> signing.properties
           
       - name: Restore keystore
         env: 
