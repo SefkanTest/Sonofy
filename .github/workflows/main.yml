@@ -35,7 +35,11 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-
+      - name: Restore keystore
+        env: 
+          SECRET_KEYSTORE_DECRYPT: ${{ secrets.secret_keystore_decrypt }}
+        run: openssl aes-256-cbc -k $"SECRET_KEYSTORE_DECRYPT" -in sonofy.jks.enc -out sonofy.jks
+                 
       - name: Build the app
         run: |
           chmod a+x gradlew
