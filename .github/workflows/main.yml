@@ -38,7 +38,7 @@ jobs:
       - name: Restore keystore
         env: 
           SECRET_KEYSTORE_DECRYPT: ${{ secrets.secret_keystore_decrypt }}
-        run: openssl aes-256-cbc -k "$"SECRET_KEYSTORE_DECRYPT"" -in sonofy.jks.enc -out sonofy.jks
+        run: openssl aes-256-cbc -d -k $"SECRET_KEYSTORE_DECRYPT" -in sonofy.jks.enc -out sonofy.jks
                  
       - name: Build the app
         env: 
