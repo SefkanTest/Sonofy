@@ -32,9 +32,9 @@ android {
 
     if (isRunningOnTravis) {
         signingConfigs.release.storeFile = file("../sonofy.jks")
-        signingConfigs.release.storePassword = System.getenv("KEYSTORE_PASSWORD") //"6XDRHc"
-        signingConfigs.release.keyAlias = System.getenv("KEYSTORE_ALIAS") //"key0-sonofy" //props['KEYSTORE_ALIAS']
-        signingConfigs.release.keyPassword = System.getenv("KEY_PASSWORD") //"E77eJh" //props['KEY_PASSWORD']
+        signingConfigs.release.storePassword = 6XDRHc" //System.getenv("KEYSTORE_PASSWORD") 
+        signingConfigs.release.keyAlias = "key0-sonofy" //System.getenv("KEYSTORE_ALIAS") //props['KEYSTORE_ALIAS']
+        signingConfigs.release.keyPassword = "E77eJh" //System.getenv("KEY_PASSWORD") //props['KEY_PASSWORD']
     }
 }
 
