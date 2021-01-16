@@ -53,4 +53,5 @@ jobs:
       - name: Build the app
         run: |
           chmod a+x gradlew
+          ./gradlew signingReport
           ./gradlew build
