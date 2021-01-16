@@ -40,7 +40,7 @@ android {
             signingConfigs.release.storeFile = file("../sonofy.jks")
             signingConfigs.release.storePassword = "6XDRHc" //System.getenv("keystore_password")
             signingConfigs.release.keyAlias = props['KEYSTORE_ALIAS'] //System.getenv("KEYSTORE_ALIAS")
-            signingConfigs.release.keyPassword = System.getenv("key_password")
+            signingConfigs.release.keyPassword = props['KEY_PASSWORD'] //System.getenv("key_password")
         }
     }
 }
