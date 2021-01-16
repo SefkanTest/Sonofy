@@ -54,7 +54,10 @@ jobs:
         run: openssl aes-256-cbc -k $"SECRET_KEYSTORE_DECRYPT" -in sonofy.jks.enc -out sonofy.jks
                  
       - name: Build the app
+        env: 
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
           chmod a+x gradlew
-          ./gradlew signingReport
           ./gradlew build
